@@ -1,0 +1,29 @@
+name: 'OWASP ZAP Full Scan'
+description: 'Scans the web application with the OWASP ZAP Baseline Scan'
+branding:
+  icon: 'zap'
+  color: 'blue'
+inputs:
+  token:
+    description: 'GitHub Token to create issues in the repository'
+    required: true
+  target:
+    description: 'Target URL'
+    required: true
+  rules_file_name:
+    description: 'Relative path of the ZAP configuration file'
+    required: false
+  docker_name:
+    description: 'The Docker file to be executed'
+    required: true
+    default: 'owasp/zap2docker-stable'
+  cmd_options:
+    description: 'Additional command line options'
+    required: false
+  issue_title:
+    description: 'The title for the GitHub issue that is created'
+    required: false
+    default: 'ZAP Scan Baseline Report'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
