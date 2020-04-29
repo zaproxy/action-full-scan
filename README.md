@@ -7,6 +7,10 @@ The ZAP full scan action runs the ZAP spider against the specified target (by de
 optional ajax spider scan and then a full active scan before reporting the results. The alerts will be maintained as a 
 GitHub issue in the corresponding repository.
 
+**WARNING** this action will perform attacks on the target website.
+You should only scan targets that you have permission to test.
+You should also check with your hosting company and any other services such as CDNs that may be affected before running this action.
+
 ## Inputs
 
 ### `target`
