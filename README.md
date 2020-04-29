@@ -10,6 +10,7 @@ GitHub issue in the corresponding repository.
 **WARNING** this action will perform attacks on the target website.
 You should only scan targets that you have permission to test.
 You should also check with your hosting company and any other services such as CDNs that may be affected before running this action.
+ZAP will also submit forms which could result in a [large number of messages](https://www.zaproxy.org/faq/how-can-i-prevent-zap-from-sending-me-1000s-of-emails-via-a-contact-us-form/) via, for example, 'Contact us' or 'comment' forms.
 
 ## Inputs
 
