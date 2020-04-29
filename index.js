@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const common = require('actions-common-scans');
+const common = require('@zaproxy/actions-common-scans');
 const _ = require('lodash');
 
 // Default file names
@@ -39,7 +39,7 @@ async function run() {
         try {
             await exec.exec(command);
         } catch (err) {
-            core.setFailed('The ZAP Baseline scan has failed, starting to analyze the alerts. err: ' + err.toString());
+            core.setFailed('The ZAP full scan has failed, starting to analyze the alerts. err: ' + err.toString());
         }
         await common.main.processReport(token, workspace, plugins, currentRunnerID, issueTitle, repoName);
     } catch (error) {

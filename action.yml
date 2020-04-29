@@ -1,12 +1,13 @@
 name: 'OWASP ZAP Full Scan'
-description: 'Scans the web application with the OWASP ZAP Baseline Scan'
+description: 'Scans the web application with the OWASP ZAP Full Scan'
 branding:
   icon: 'zap'
   color: 'blue'
 inputs:
   token:
     description: 'GitHub Token to create issues in the repository'
-    required: true
+    required: false
+    default: ${{ github.token }}
   target:
     description: 'Target URL'
     required: true
@@ -21,9 +22,9 @@ inputs:
     description: 'Additional command line options'
     required: false
   issue_title:
-    description: 'The title for the GitHub issue that is created'
+    description: 'The title for the GitHub issue to be created'
     required: false
-    default: 'ZAP Scan Baseline Report'
+    default: 'ZAP Full Scan Report'
 runs:
   using: 'node12'
   main: 'dist/index.js'
