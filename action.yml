@@ -25,6 +25,10 @@ inputs:
     description: 'The title for the GitHub issue to be created'
     required: false
     default: 'ZAP Full Scan Report'
+  fail_action:
+    description: 'The action status will be set to fail if ZAP identifies any alerts during the full scan'
+    required: false
+    default: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
