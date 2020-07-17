@@ -48,6 +48,11 @@ Make sure to checkout the repository (actions/checkout@v2) to provide the ZAP ru
 **Optional** ZAP action uses the default action token provided by GitHub to create and update the issue for the full scan.
 You do not have to create a dedicated token. Make sure to use the GitHub's default action token when running the action(`secrets.GIT_TOKEN`).
 
+### `fail_action`
+
+**Optional** By default ZAP Docker container will fail with an [exit code](https://github.com/zaproxy/zaproxy/blob/efb404d38280dc9ecf8f88c9b0c658385861bdcf/docker/zap-full-scan.py#L31), 
+if it identifies any alerts. Set this option to `true` if you want to fail the status of the GitHub Scan if ZAP identifies any alerts during the scan.
+
 ## Example usage
 
 ** Basic **
