@@ -29,6 +29,10 @@ inputs:
     description: 'The action status will be set to fail if ZAP identifies any alerts during the full scan'
     required: false
     default: false
+  allow_issue_writing:
+    description: 'Whether Github issues should be created or not'
+    required: false
+    default: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

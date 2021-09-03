@@ -4,6 +4,9 @@ All notable changes to this GitHub action will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+- An input (`allow_issue_writing`) to choose if a GitHub issue should be raised or not.
+
 ### Changed
 - Update dependencies.
 

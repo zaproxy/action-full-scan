@@ -39,6 +39,11 @@ Make sure to checkout the repository (actions/checkout@v2) to provide the ZAP ru
 
 **Optional** Additional command lines options for the full scan script
 
+### `allow_issue_writing`
+
+**Optional** By default the action will file the report to the GitHub issue using the `issue_title` input.
+Set this to false if you don't want the issue to be created or updated.
+
 ### `issue_title`
 
 **Optional** The title for the GitHub issue to be created.
