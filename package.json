@@ -27,7 +27,7 @@
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.0",
     "@actions/github": "^1.0.0",
-    "@zaproxy/actions-common-scans": "^0.1.0",
+    "@zaproxy/actions-common-scans": "^0.2.0",
     "adm-zip": "^0.4.14",
     "d3-dsv": "^1.2.0",
     "github-api": "^3.3.0",
