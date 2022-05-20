@@ -3858,8 +3858,12 @@ async function run() {
             plugins = await common.helper.processLineByLine(`${workspace}/${rulesFileLocation}`);
         }
 
+        // Create the files so we can change the perms and allow the docker non root user to update them
+        await exec.exec(`touch ${jsonReportName} ${mdReportName} ${htmlReportName}`);
+        await exec.exec(`chmod a+w ${jsonReportName} ${mdReportName} ${htmlReportName}`);
+
         await exec.exec(`docker pull ${docker_name} -q`);
-        let command = (`docker run --user root -v ${workspace}:/zap/wrk/:rw --network="host" ` +
+        let command = (`docker run -v ${workspace}:/zap/wrk/:rw --network="host" ` +
             `-t ${docker_name} zap-full-scan.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${cmdOptions}`);
 
         if (plugins.length !== 0) {
