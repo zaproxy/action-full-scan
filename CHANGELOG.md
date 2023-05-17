@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Addresses GitHub Actions Node 12 deprecation.
 
+### Fixed
+- Fixed typo in README
+
 ## [0.4.0] - 2022-05-23
 ### Changed
 - Update dependencies.
