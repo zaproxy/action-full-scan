@@ -51,7 +51,7 @@ Set this to false if you don't want the issue to be created or updated.
 ### `token`
 
 **Optional** ZAP action uses the default action token provided by GitHub to create and update the issue for the full scan.
-You do not have to create a dedicated token. Make sure to use the GitHub's default action token when running the action(`secrets.GIT_TOKEN`).
+You do not have to create a dedicated token. Make sure to use the GitHub's default action token when running the action(`secrets.GITHUB_TOKEN`).
 
 ### `fail_action`
 
