@@ -4,9 +4,7 @@
   "description": "ZAP full scan action",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js",
-    "package": "ncc build index.js -o dist",
-    "test": "eslint index.js && jest"
+    "package": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
@@ -23,21 +21,12 @@
     "url": "https://github.com/zaproxy/action-full-scan/issues"
   },
   "dependencies": {
-    "@actions/artifact": "^0.2.0",
-    "@actions/core": "^1.2.6",
-    "@actions/exec": "^1.0.0",
-    "@actions/github": "^1.0.0",
-    "@zaproxy/actions-common-scans": "^0.2.0",
-    "adm-zip": "^0.4.14",
-    "d3-dsv": "^1.2.0",
-    "github-api": "^3.3.0",
-    "js-yaml": "^3.13.1",
-    "lodash": "^4.17.21",
-    "s": "^1.0.0"
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1",
+    "@zaproxy/actions-common-scans": "^1.0.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.21.1",
-    "eslint": "^6.3.0",
-    "jest": "^24.9.0"
+    "@vercel/ncc": "^0.36.1"
   }
 }

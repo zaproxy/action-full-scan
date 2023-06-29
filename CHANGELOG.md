@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - Addresses GitHub Actions Node 12 deprecation.
+- Update dependencies.
 
 ### Fixed
 - Correct the name of the `GITHUB_TOKEN` secret mentioned in the `README`.
