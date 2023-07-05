@@ -8081,11 +8081,17 @@ const actionCommon = {
             create_new_issue = true;
         }
         else {
+            let login = "github-actions[bot]";
+            try {
+                login = (await octokit.users.getAuthenticated()).data.login;
+            }
+            catch (e) {
+                console.log(`Using ${login} to serch for issues.`);
+            }
             // Sometimes search API returns recently closed issue as an open issue
             for (let i = 0; i < issues.data.items.length; i++) {
                 const issue = issues.data.items[i];
-                if (issue["state"] === "open" &&
-                    issue["user"]["login"] === "github-actions[bot]") {
+                if (issue["state"] === "open" && issue["user"]["login"] === login) {
                     openIssue = issue;
                     break;
                 }
@@ -8108,7 +8114,7 @@ const actionCommon = {
                     let lastBotComment;
                     const lastCommentIndex = comments["data"].length - 1;
                     for (let i = lastCommentIndex; i >= 0; i--) {
-                        if (comments["data"][i]["user"]["login"] === "github-actions[bot]") {
+                        if (comments["data"][i]["user"]["login"] === login) {
                             lastBotComment = comments["data"][i];
                             break;
                         }
