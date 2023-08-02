@@ -1,6 +1,6 @@
 # ZAP Action Full Scan
 
-A GitHub Action for running the OWASP ZAP [Full Scan](https://www.zaproxy.org/docs/docker/full-scan/) to perform
+A GitHub Action for running the ZAP [Full Scan](https://www.zaproxy.org/docs/docker/full-scan/) to perform
 Dynamic Application Security Testing (DAST). 
 
 The ZAP full scan action runs the ZAP spider against the specified target (by default with no time limit) followed by an 
@@ -87,7 +87,7 @@ jobs:
         uses: zaproxy/action-full-scan@v0.5.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/zap2docker-stable'
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
           target: 'https://www.zaproxy.org/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
@@ -98,8 +98,6 @@ jobs:
 ZAP is internationalised and alert information is available in many languages.
 
 You can change the language used by this action by changing the locale via the `cmd_options` e.g.: `-z "-config view.locale=fr_FR"`
-
-This is currently only available with the `owasp/zap2docker-weekly` or `owasp/zap2docker-live` Docker images.
 
 See [https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/dist/lang](https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/dist/lang) for the full set of locales currently supported.
 
