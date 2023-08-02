@@ -4,6 +4,8 @@ All notable changes to this GitHub action will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- The default Docker image was changed to `ghcr.io/zaproxy/zaproxy:stable`.
 
 ## [0.5.1] - 2023-07-05
 ### Fixed
