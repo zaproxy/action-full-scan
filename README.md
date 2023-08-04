@@ -101,4 +101,4 @@ You can change the language used by this action by changing the locale via the `
 
 See [https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/dist/lang](https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/dist/lang) for the full set of locales currently supported.
 
-You can help improve ZAP translations via [https://crowdin.com/project/owasp-zap](https://crowdin.com/project/owasp-zap). 
+You can help improve ZAP translations via [https://crowdin.com/project/zaproxy](https://crowdin.com/project/zaproxy). 
