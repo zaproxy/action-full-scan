@@ -4,6 +4,8 @@ All notable changes to this GitHub action will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Fixed
+- Update Crowdin link.
 
 ## [0.6.0] - 2023-08-02
 ### Changed
