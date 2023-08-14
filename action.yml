@@ -33,6 +33,10 @@ inputs:
     description: 'Whether Github issues should be created or not'
     required: false
     default: true
+  artifact_name:
+    description: 'The name of the artifact that contains the ZAP reports'
+    required: false
+    default: 'zap_scan'
 runs:
   using: 'node16'
   main: 'dist/index.js'

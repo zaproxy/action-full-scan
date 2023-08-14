@@ -58,6 +58,10 @@ You do not have to create a dedicated token. Make sure to use the GitHub's defau
 **Optional** By default ZAP Docker container will fail with an [exit code](https://github.com/zaproxy/zaproxy/blob/efb404d38280dc9ecf8f88c9b0c658385861bdcf/docker/zap-full-scan.py#L31), 
 if it identifies any alerts. Set this option to `true` if you want to fail the status of the GitHub Scan if ZAP identifies any alerts during the scan.
 
+### `artifact_name`
+
+**Optional** By default the full scan action will attach the report to the build with the name `zap_scan`. Set this to a different string to name it something else. Consult [GitHub's documentation](https://github.com/actions/toolkit/blob/main/packages/artifact/docs/additional-information.md#non-supported-characters) for which artifact names are allowed.
+
 ## Example usage
 
 ** Basic **
