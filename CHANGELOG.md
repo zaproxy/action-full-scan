@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 - Update Crowdin link.
 
+### Added
+ - An input (`artifact_name`) used to name the artifact that contains the ZAP reports. [#73](https://github.com/zaproxy/action-full-scan/pull/73)
+
 ## [0.6.0] - 2023-08-02
 ### Changed
 - The default Docker image was changed to `ghcr.io/zaproxy/zaproxy:stable`.

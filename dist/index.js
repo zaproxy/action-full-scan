@@ -38341,6 +38341,7 @@ async function run() {
         let issueTitle = core.getInput('issue_title');
         let failAction = core.getInput('fail_action');
         let allowIssueWriting = core.getInput('allow_issue_writing');
+        let artifactName = core.getInput('artifact_name');
         let createIssue = true;
 
         if (!(String(failAction).toLowerCase() === 'true' || String(failAction).toLowerCase() === 'false')) {
@@ -38348,6 +38349,11 @@ async function run() {
         }
         if (String(allowIssueWriting).toLowerCase() === 'false') {
             createIssue = false;
+        }
+
+        if (!artifactName) {
+            console.log('[WARNING]: \'artifact_name\' action input should not be empty. Setting it back to the default name.');
+            artifactName = 'zap_scan';
         }
 
         console.log('starting the program');
@@ -38386,7 +38392,7 @@ async function run() {
                 console.log('Scanning process completed, starting to analyze the results!')
             }
         }
-        await common.main.processReport(token, workspace, plugins, currentRunnerID, issueTitle, repoName, createIssue);
+        await common.main.processReport(token, workspace, plugins, currentRunnerID, issueTitle, repoName, createIssue, artifactName);
     } catch (error) {
         core.setFailed(error.message);
     }
