@@ -62,13 +62,22 @@ if it identifies any alerts. Set this option to `true` if you want to fail the s
 
 **Optional** By default the full scan action will attach the report to the build with the name `zap_scan`. Set this to a different string to name it something else. Consult [GitHub's documentation](https://github.com/actions/toolkit/blob/main/packages/artifact/docs/additional-information.md#non-supported-characters) for which artifact names are allowed.
 
+## Environment variables
+
+If set, the following [ZAP authentication environment variables](https://www.zaproxy.org/docs/authentication/handling-auth-yourself/#authentication-env-vars)
+will be copied into the docker container:
+
+- `ZAP_AUTH_HEADER_VALUE`
+- `ZAP_AUTH_HEADER`
+- `ZAP_AUTH_HEADER_SITE`
+
 ## Example usage
 
 ** Basic **
 ```
 steps:
   - name: ZAP Scan
-    uses: zaproxy/action-full-scan@v0.7.0
+    uses: zaproxy/action-full-scan@v0.8.0
     with:
       target: 'https://www.zaproxy.org/'
 ```
@@ -88,7 +97,7 @@ jobs:
         with:
           ref: master
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.7.0
+        uses: zaproxy/action-full-scan@v0.8.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
