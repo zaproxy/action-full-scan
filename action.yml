@@ -38,5 +38,5 @@ inputs:
     required: false
     default: 'zap_scan'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
