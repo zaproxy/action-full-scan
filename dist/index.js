@@ -38369,15 +38369,17 @@ async function run() {
         await exec.exec(`chmod a+w ${jsonReportName} ${mdReportName} ${htmlReportName}`);
 
         await exec.exec(`docker pull ${docker_name} -q`);
-        let command = (`curl http://172.18.0.2 && docker run --net zapnet -v ${workspace}:/zap/wrk/:rw -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
+        let command = (`docker run --net zapnet -v ${workspace}:/zap/wrk/:rw -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
             `-t ${docker_name} zap-full-scan.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${cmdOptions}`);
 
+        let command2 = (`curl http://172.18.0.2`);
         if (plugins.length !== 0) {
             command = command + ` -c ${rulesFileLocation}`
         }
 
         try {
             await exec.exec(command);
+            await exec.exec(command2);
         } catch (err) {
             if (err.toString().includes('exit code 3')) {
                 core.setFailed('failed to scan the target: ' + err.toString());
