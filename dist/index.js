@@ -38343,6 +38343,7 @@ async function run() {
         let allowIssueWriting = core.getInput('allow_issue_writing');
         let artifactName = core.getInput('artifact_name');
         let createIssue = true;
+        let networkName = core.getInput('network_name');
 
         if (!(String(failAction).toLowerCase() === 'true' || String(failAction).toLowerCase() === 'false')) {
             console.log('[WARNING]: \'fail_action\' action input should be either \'true\' or \'false\'');
@@ -38356,6 +38357,9 @@ async function run() {
             artifactName = 'zap_scan';
         }
 
+        if (!networkName) {
+            networkName = 'host';
+        }
         console.log('starting the program');
         console.log('github run id :' + currentRunnerID);
 
@@ -38369,7 +38373,7 @@ async function run() {
         await exec.exec(`chmod a+w ${jsonReportName} ${mdReportName} ${htmlReportName}`);
 
         await exec.exec(`docker pull ${docker_name} -q`);
-        let command = (`docker run --network=isolated -v ${workspace}:/zap/wrk/:rw -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
+        let command = (`docker run -v ${workspace}:/zap/wrk/:rw --network=${networkName} -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
             `-t ${docker_name} zap-full-scan.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${cmdOptions}`);
 
         if (plugins.length !== 0) {
