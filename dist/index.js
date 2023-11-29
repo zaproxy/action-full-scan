@@ -38378,6 +38378,7 @@ async function run() {
 
         try {
             await exec.exec(command);
+	    await exec.exec(`docker network inspect isolated`);
         } catch (err) {
             if (err.toString().includes('exit code 3')) {
                 core.setFailed('failed to scan the target: ' + err.toString());
