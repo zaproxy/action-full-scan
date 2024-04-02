@@ -23,7 +23,7 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "@zaproxy/actions-common-scans": "^1.0.2",
+    "@zaproxy/actions-common-scans": "^1.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
