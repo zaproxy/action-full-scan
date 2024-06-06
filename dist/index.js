@@ -59636,9 +59636,8 @@ async function run() {
             plugins = await common.helper.processLineByLine(`${workspace}/${rulesFileLocation}`);
         }
 
-        // Create the files so we can change the perms and allow the docker non root user to update them
-        await exec.exec(`touch ${jsonReportName} ${mdReportName} ${htmlReportName}`);
-        await exec.exec(`chmod a+w ${jsonReportName} ${mdReportName} ${htmlReportName}`);
+        // Allow writing files from the Docker container.
+        await exec.exec(`chmod a+w ${workspace}`);
 
         await exec.exec(`docker pull ${docker_name} -q`);
         let command = (`docker run -v ${workspace}:/zap/wrk/:rw --network="host" -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
