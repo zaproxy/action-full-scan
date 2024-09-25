@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Changed
-- Update dependencies.
+- Update dependencies, which adds rate-limiting when accessing the GitHub API [#59](https://github.com/zaproxy/action-full-scan/issues/59).
 
 ### Fixed
 - Allow to write any file from the Docker container.
