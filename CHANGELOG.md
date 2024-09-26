@@ -3,6 +3,8 @@ All notable changes to this GitHub action will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
 ## [0.11.0] - 2024-09-25
 ### Changed
 - Update dependencies, which adds rate-limiting when accessing the GitHub API [#59](https://github.com/zaproxy/action-full-scan/issues/59).
@@ -72,6 +74,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 First release to Marketplace.
 
+[Unreleased]: https://github.com/zaproxy/action-full-scan/compare/v0.11.0...HEAD
 [0.11.0]: https://github.com/zaproxy/action-full-scan/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/zaproxy/action-full-scan/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/zaproxy/action-full-scan/compare/v0.8.0...v0.9.0
