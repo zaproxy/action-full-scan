@@ -4,6 +4,8 @@ All notable changes to this GitHub action will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- Update dependencies to stop using deprecated `upload-artifact` version.
 
 ## [0.11.0] - 2024-09-25
 ### Changed
