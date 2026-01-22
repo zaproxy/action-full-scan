@@ -4,6 +4,8 @@ All notable changes to this GitHub action will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+Update dependencies.
 
 ## [0.13.0] - 2025-10-24
 ### Changed
