@@ -37,6 +37,10 @@ inputs:
     description: 'The name of the artifact that contains the ZAP reports'
     required: false
     default: 'zap_scan'
+  min_level:
+    description: 'Minimum level to show in the ZAP report: PASS, IGNORE, INFO, WARN or FAIL'
+    required: false
+    default: ''
 runs:
   using: 'node24'
   main: 'dist/index.js'
