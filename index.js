@@ -23,11 +23,13 @@ async function run() {
         let failAction = core.getInput('fail_action');
         let allowIssueWriting = core.getInput('allow_issue_writing');
         let artifactName = core.getInput('artifact_name');
+        let minLevel = core.getInput('min_level');
         let createIssue = true;
 
         if (!(String(failAction).toLowerCase() === 'true' || String(failAction).toLowerCase() === 'false')) {
             console.log('[WARNING]: \'fail_action\' action input should be either \'true\' or \'false\'');
         }
+
         if (String(allowIssueWriting).toLowerCase() === 'false') {
             createIssue = false;
         }
@@ -35,6 +37,13 @@ async function run() {
         if (!artifactName) {
             console.log('[WARNING]: \'artifact_name\' action input should not be empty. Setting it back to the default name.');
             artifactName = 'zap_scan';
+        }
+
+        // Validate min_level input
+        const validLevels = ['PASS', 'IGNORE', 'INFO', 'WARN', 'FAIL'];
+        if (minLevel && !validLevels.includes(minLevel.toUpperCase())) {
+            console.log(`[WARNING]: 'min_level' must be one of: ${validLevels.join(', ')}. Ignoring invalid value.`);
+            minLevel = '';
         }
 
         console.log('starting the program');
@@ -47,10 +56,13 @@ async function run() {
 
         // Allow writing files from the Docker container.
         await exec.exec(`chmod a+w ${workspace}`);
-
         await exec.exec(`docker pull ${docker_name} -q`);
+
+        // Build -l flag only if a valid min_level was provided
+        const minLevelFlag = minLevel ? `-l ${minLevel.toUpperCase()}` : '';
+
         let command = (`docker run -v ${workspace}:/zap/wrk/:rw --network="host" -e ZAP_AUTH_HEADER -e ZAP_AUTH_HEADER_VALUE -e ZAP_AUTH_HEADER_SITE ` +
-            `-t ${docker_name} zap-full-scan.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${cmdOptions}`);
+            `-t ${docker_name} zap-full-scan.py -t ${target} -J ${jsonReportName} -w ${mdReportName}  -r ${htmlReportName} ${minLevelFlag} ${cmdOptions}`);
 
         if (plugins.length !== 0) {
             command = command + ` -c ${rulesFileLocation}`
@@ -68,10 +80,11 @@ async function run() {
                 && String(failAction).toLowerCase() === 'true') {
                 console.log(`[info] By default ZAP Docker container will fail if it identifies any alerts during the scan!`);
                 core.setFailed('Scan action failed as ZAP has identified alerts, starting to analyze the results. ' + err.toString());
-            }else {
+            } else {
                 console.log('Scanning process completed, starting to analyze the results!')
             }
         }
+
         await common.main.processReport(token, workspace, plugins, currentRunnerID, issueTitle, repoName, createIssue, artifactName);
     } catch (error) {
         core.setFailed(error.message);
